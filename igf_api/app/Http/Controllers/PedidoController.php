@@ -36,4 +36,18 @@ class PedidoController extends Controller
             return response()->json(['success'=>false, 'error'=>$e->getMessage()]);
         }
     }
+
+    public function eliminar(Request $request)
+    {
+        try{
+            $eliminar = Pedido::eliminar($request->id);
+            if($eliminar){
+                return response()->json(['success'=>true]);
+            }else{
+                return respobse()->json(['success'=>false]);
+            }
+        }catch(\Exception $e){
+            return response()->json(['success'=>false, 'error'=>$e->getMessage()]);
+        }
+    }
 }

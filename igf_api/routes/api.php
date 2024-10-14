@@ -18,3 +18,4 @@ Route::post('distribuidores', [DistribuidorController::class, 'obtener']);
 // Pedidos
 Route::post('pedidos', [PedidoController::class, 'obtener']);
 Route::post('guardarPedido', [PedidoController::class, 'guardar']);
+Route::post('eliminarPedido', [PedidoController::class, 'eliminar']);

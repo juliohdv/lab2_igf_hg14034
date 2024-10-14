@@ -16,12 +16,16 @@ import {
     Button
 } from '@mui/material';
 import  axios  from 'axios';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
 // project import
 import MainCard from 'components/MainCard';
 
 // ==============================|| SAMPLE PAGE ||============================== //
 
 const Registro = () => {
+    const MySwal = withReactContent(Swal)
     const [tipos, setTipos] = useState([]);
     const [sucursales, setSucursales] = useState([]);
     const [distribuidores, setDistribuidores] = useState([]);
@@ -78,7 +82,23 @@ const Registro = () => {
             })
             .then((response)=>{
                 const data = response.data;
-                console.log(data);
+                if(data.success){
+                    MySwal.fire({
+                        title: 'Guardar Pedido',
+                        text: 'Su pedido se ha registrado con exito ',
+                        icon: 'success',
+                    })
+                    setMedicamento('')
+                    setCantidad('')
+                    setTipoSeleccionado('')
+                    
+                }else{
+                    MySwal.fire({
+                        title: 'Guardar Pedido',
+                        text: 'Hubo un error al procesar el pedido',
+                        icon: 'error',
+                    })
+                }
             })
     }
     useEffect(()=>{
