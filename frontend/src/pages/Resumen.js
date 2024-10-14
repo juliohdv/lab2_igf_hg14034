@@ -30,6 +30,7 @@ import EditIcon from '@mui/icons-material/Edit';
 const Resumen = () => {
     const MySwal = withReactContent(Swal)
     const [pedidos, setPedidos] = useState([])
+    
     const getPedidos = async () => {
         await axios.post('http://127.0.0.1:8000/api/pedidos',
             {
